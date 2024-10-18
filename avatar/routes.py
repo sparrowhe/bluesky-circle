@@ -1,4 +1,5 @@
 from flask import render_template, request, current_app
+from flask_cors import cross_origin
 from . import avatar_bp
 from .parse_friends import parse_friends
 from at_client import at_client_extension
@@ -8,6 +9,7 @@ from .utils import plot_avatars_full_circle
 def index():
     return render_template('index.html')
 
+@cross_origin()
 @avatar_bp.route('/generate', methods=['POST'])
 def generate_avatar():
     client = at_client_extension.get_client()

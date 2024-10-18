@@ -1,0 +1,18 @@
+#root {
+  width: 100%
+}
+
+.color-input::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+.color-input::-webkit-color-swatch {
+  border: none;
+}
+.color-input::-moz-color-swatch {
+  border: none;
+}
+.color-input::-webkit-color-picker {
+  position: absolute;
+  top: 100%;
+  left: 0;
+}

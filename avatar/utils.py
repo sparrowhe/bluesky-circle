@@ -58,7 +58,7 @@ def load_image_as_circle(image_url, radius, proxies=None):
 def plot_avatars_full_circle(friends_dict, center_avatar_url, proxies=None):
     # Create a blank 1024x1024 white canvas
     canvas_size = (800, 800)
-    canvas = Image.new("RGBA", canvas_size, (255, 255, 255, 255))
+    canvas = Image.new("RGBA", canvas_size, (255, 255, 255, 0))
 
     # Define the sizes for the avatars in each circle
     base_radius = int(35*1.25)  # Radius for avatars in the innermost circle
@@ -81,6 +81,7 @@ def plot_avatars_full_circle(friends_dict, center_avatar_url, proxies=None):
     friend_idx = 0
     radius = initial_radius
     layer = 0
+    gap_size = 10
 
     while friend_idx < len(sorted_friends) and layer < 4:
         # Calculate avatar size for this layer (decrease by size_step for each layer)
@@ -88,7 +89,8 @@ def plot_avatars_full_circle(friends_dict, center_avatar_url, proxies=None):
         avatar_size = avatar_radius * 2  # Diameter for resizing
 
         # Calculate how many avatars fit in the current circle
-        num_in_current_circle = int(2 * PI * radius / (avatar_size))  # Adjusted based on avatar size
+        # Adding gap_size to ensure there is space between avatars
+        num_in_current_circle = int(2 * PI * radius / (avatar_size + gap_size))  # Adjusted based on avatar size + gap
         theta_step = 2 * PI / num_in_current_circle  # Angle between avatars
         rotation_offset = layer * (PI / 12)  # Rotate 15 degrees for each layer
 
