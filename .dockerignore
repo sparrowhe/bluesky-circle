@@ -4,6 +4,7 @@ include/
 bin/
 share/
 pyvenv.cfg
-static/
+static/avatars/
 test.py
 *.png
+frontend/

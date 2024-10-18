@@ -40,7 +40,7 @@ export default function Component() {
     setImageData(null)
     // turnstile.reset()
     try {
-      const response = await fetch(`http://127.0.0.1:5000/generate`, {
+      const response = await fetch(`/generate`, {
         method: 'POST',
         body: new URLSearchParams({ handle, captchaKey }),
         headers: {

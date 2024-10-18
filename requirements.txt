@@ -3,3 +3,4 @@ Pillow==10.0.0
 requests==2.31.0
 atproto==0.0.54
 gunicorn==23.0.0
+flask_cors==5.0.0

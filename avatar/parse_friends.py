@@ -17,7 +17,11 @@ def parse_friends(client: Client, handle: str) -> dict:
     for feed_view in profile_feed.feed:
         if feed_view.post.record.reply != None:
             reply_parent = feed_view.post.record.reply.parent
-            reply_parent_author = client.get_post_thread(reply_parent.uri).thread.post.author
+            try:
+                reply_parent_author = client.get_post_thread(reply_parent.uri).thread.post.author
+            except:
+                continue # Skip if the author of the parent post is not found
+                
             if reply_parent_author.handle == handle:
                 continue
             friendData = {
