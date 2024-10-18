@@ -1,22 +1,23 @@
 import requests
 from PIL import Image, ImageOps, ImageDraw
 from io import BytesIO
-import numpy as np
 import math
 import os
 
+PI=3.14
 
 def check_cache_img(url):
+    # Check if the cache path not exists
+    if not os.path.join('static', 'avatars'):
+        os.makedirs(os.path.join('static', 'avatars'))
+        
     # Check if the image is already cached
     cache_path = os.path.join('static', 'avatars', os.path.basename(url.split('/')[-1]+'.jpg'))
     if os.path.exists(cache_path):
         return cache_path
     return None
 
-def load_image_as_circle(image_url, radius, proxies={
-    'https': 'http://127.0.0.1:7897',
-    'http': 'http://127.0.0.1:7897'
-}):
+def load_image_as_circle(image_url, radius, proxies=None):
     try:
         # Add proxy support in the request
         if check_cache_img(image_url):
@@ -87,9 +88,9 @@ def plot_avatars_full_circle(friends_dict, center_avatar_url, proxies=None):
         avatar_size = avatar_radius * 2  # Diameter for resizing
 
         # Calculate how many avatars fit in the current circle
-        num_in_current_circle = int(2 * np.pi * radius / (avatar_size))  # Adjusted based on avatar size
-        theta_step = 2 * np.pi / num_in_current_circle  # Angle between avatars
-        rotation_offset = layer * (np.pi / 12)  # Rotate 15 degrees for each layer
+        num_in_current_circle = int(2 * PI * radius / (avatar_size))  # Adjusted based on avatar size
+        theta_step = 2 * PI / num_in_current_circle  # Angle between avatars
+        rotation_offset = layer * (PI / 12)  # Rotate 15 degrees for each layer
 
         for i in range(num_in_current_circle):
             if friend_idx >= len(sorted_friends):

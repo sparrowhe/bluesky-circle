@@ -176,4 +176,3 @@ pyvenv.cfg
 static/
 test.py
 *.png
-config.py

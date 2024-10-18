@@ -1,0 +1,9 @@
+lib/
+lib64
+include/
+bin/
+share/
+pyvenv.cfg
+static/
+test.py
+*.png

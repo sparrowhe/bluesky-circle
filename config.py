@@ -6,6 +6,6 @@ class Config:
     UPLOAD_FOLDER = os.path.join(BASE_DIR, 'static/avatars')
     
     # BlueSky login credentials
-    BLUESKY_HANDLE = ''
-    BLUESKY_PASSWORD = ''
-    BLUESKY_BASE = ''
+    BLUESKY_HANDLE = os.getenv('BLUESKY_HANDLE', '')
+    BLUESKY_PASSWORD = os.getenv('BLUESKY_PASSWORD', '')
+    BLUESKY_BASE = os.getenv('BLUESKY_BASE', '')

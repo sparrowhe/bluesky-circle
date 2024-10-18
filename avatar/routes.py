@@ -13,6 +13,9 @@ def generate_avatar():
     client = at_client_extension.get_client()
 
     handle = request.form.get('handle')
+    # filter invisible characters
+    handle = ''.join(filter(lambda x: x.isprintable(), handle))
+    handle.replace('@', '')
     friends_data = parse_friends(client, handle)
     center = client.get_profile(handle)
     center_avatar_url = center.avatar

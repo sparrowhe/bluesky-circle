@@ -1,5 +1,4 @@
 from PIL import Image, ImageOps, ImageDraw
-import numpy as np
 import math
 import requests
 from io import BytesIO
