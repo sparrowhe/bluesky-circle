@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
-import { AlertCircle } from "lucide-react"
+import { AlertCircle, Github, ExternalLink } from "lucide-react"
 
 import "./App.css"
 
@@ -25,7 +25,7 @@ const fantasicLoadingText = [
 export default function Component() {
   // const turnstile = useTurnstile()
   const [handle, setHandle] = useState('')
-  const [captchaKey, ] = useState('')
+  const [captchaKey,] = useState('')
   const [imageData, setImageData] = useState<string | null>(null)
   const [backgroundColor, setBackgroundColor] = useState('#0085ff')
   const [isLoading, setIsLoading] = useState(false)
@@ -119,9 +119,9 @@ export default function Component() {
                   // remove @ from handle
                   setHandle(e.target.value.replace('@', ''))
                   // remove invalid characters
-                  setHandle(e.target.value.replace(/[^a-zA-Z0-9_.]/g, ''))
+                  setHandle(e.target.value.replace(/[^a-zA-Z0-9_\-.]/g, ''))
                 }}
-                pattern='@{0,1}[a-zA-Z0-9_.]*'
+                pattern='@{0,1}[a-zA-Z0-9_\-.]*'
                 placeholder="Enter BlueSky Handle"
                 required
               />
@@ -170,8 +170,22 @@ export default function Component() {
             </div>
           </CardFooter>
         )}
+        <footer className="mt-8 text-sm text-gray-500 space-y-1">
+          <div className="flex items-center justify-center space-x-4">
+            <a href="https://github.com/sparrowhe/bluesky-circle" className="flex items-center text-primary hover:text-primary/60 transition-colors">
+              <Github className="w-4 h-4 mr-1" />
+              Source Code
+            </a>
+            <a href="https://github.com/users/sparrowhe/projects/1" className="flex items-center text-primary hover:text-primary/60 transition-colors">
+              <ExternalLink className="w-4 h-4 mr-1" />
+              Roadmap
+            </a>
+          </div>
+          <p className="text-center pb-2">
+            Designed and developed by <a href="https://bsky.app/profile/sparrow.0x0e.top">SparrowHe</a> with ❤️
+          </p>
+        </footer>
       </Card>
-      <Label>Powered by SparrowCloud</Label>
     </div>
   )
 }

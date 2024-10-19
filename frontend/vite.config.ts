@@ -9,4 +9,19 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  base: "./",
+  build: {
+    assetsDir: 'static',
+  },
+  server: {
+    port: 3000,
+    cors: true,
+    proxy: {
+      "/generate": {
+        target: "https://circle.sparrowhe.top/",
+        changeOrigin: true,
+        secure: false,
+      },
+    },
+  },
 })
